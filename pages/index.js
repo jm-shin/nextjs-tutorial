@@ -1,8 +1,14 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
+import Head from 'next/head';
 
 const Index = () => (
     <Layout>
+        <Head>
+            <title>
+                Index 페이지
+            </title>
+        </Head>
         <div>
             <h1>
                 예제 제목입니다.

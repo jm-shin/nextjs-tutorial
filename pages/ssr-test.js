@@ -1,15 +1,26 @@
 import Layout from "../components/Layout";
 import React from "react";
+import axios from "axios";
 
 class SsrTest extends React.Component {
     static async getInitialProps ({req}) {
-        return req? { from: 'server'} : { from: 'client'}
+        const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+        return {
+            users: response.data
+        }
     }
 
     render() {
+        const { users } = this.props;
+        const userList = users.map(
+            user => <li key={user.id}>{user.username}</li>
+        )
+
         return (
           <Layout>
-              {this.props.from} 에서 실행되었습니다.
+              <ul>
+                  {userList}
+              </ul>
           </Layout>
         );
     }

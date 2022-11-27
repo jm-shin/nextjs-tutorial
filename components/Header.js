@@ -9,7 +9,7 @@ const Header = () => {
         <div>
             <Link href="/">홈</Link>&ensp;
             <Link href="/about">내 소개</Link>&ensp;
-            <Link href="/ssr-test">SSR 테스트</Link>
+            <Link prefetch href="/ssr-test">SSR 테스트</Link>
         </div>
     );
 }
