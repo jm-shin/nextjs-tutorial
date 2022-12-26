@@ -1,5 +1,6 @@
 import Layout from "../components/Layout";
 import React from "react";
+import axios from 'axios';
 
 const menu = [
     {
@@ -10,6 +11,17 @@ const menu = [
         price: 900
     },
 ];
+
+export async function getStaticPaths() {
+    const res = await fetch('https://.../posts');
+    const posts = await res.json();
+
+    const paths = posts.map((post) => ({
+        params: { id: post.id }
+    }));
+
+    return { paths, fallback: false };
+}
 
 class MammothCoffee extends React.Component {
     render() {
